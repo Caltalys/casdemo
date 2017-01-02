@@ -5,9 +5,9 @@
         .module('casdemoApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance'];
+    LoginController.$inject = ['$rootScope','$window', '$state', '$timeout', 'Auth', '$uibModalInstance'];
 
-    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance) {
+    function LoginController ($rootScope, $window, $state, $timeout, Auth, $uibModalInstance) {
         var vm = this;
 
         vm.authenticationError = false;
@@ -19,6 +19,7 @@
         vm.rememberMe = true;
         vm.requestResetPassword = requestResetPassword;
         vm.username = null;
+        vm.relog = relog;
 
         $timeout(function (){angular.element('#username').focus();});
 
@@ -68,6 +69,11 @@
         function requestResetPassword () {
             $uibModalInstance.dismiss('cancel');
             $state.go('requestReset');
+        }
+
+        function relog(){
+            $window.location.href = 'app/login?postMessage';
+
         }
     }
 })();

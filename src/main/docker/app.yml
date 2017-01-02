@@ -2,15 +2,24 @@ version: '2'
 services:
     casdemo-app:
         image: casdemo
-        external_links:
-            - casdemo-postgresql:postgresql
+        hostname: casdemo
+        domainname: ohajda.com
+        links:
+            - casdemo-postgresql:pgdb
+            - casdemo-cas:cas.ohajda.com
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/casdemo
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://pgdb:5432/casdemo
             - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
         ports:
-            - 8080:8080
+            - 8815:8815
     casdemo-postgresql:
         extends:
             file: postgresql.yml
             service: casdemo-postgresql
+    casdemo-cas:
+        links:
+            - casdemo-postgresql:pgdb
+        extends:
+            file: cas.yml
+            service: casdemo-cas

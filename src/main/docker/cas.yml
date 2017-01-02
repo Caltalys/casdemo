@@ -1,0 +1,14 @@
+version: '2'
+services:
+    casdemo-cas:
+        container_name: casdemo-cas
+        image: rohajda/cas:v5.0.1
+        hostname: cas
+        domainname: ohajda.com
+        volumes:
+            - ./thekeystore:/etc/cas/thekeystore
+            - ./prod/cas/config/cas.properties:/cas-overlay/etc/cas/config/cas.properties
+            - ./prod/cas/config/log4j2.xml:/cas-overlay/etc/cas/config/log4j2.xml
+            - ./prod/cas/services:/etc/cas/services
+        ports:
+            - 8443:8443

@@ -5,9 +5,9 @@
         .module('casdemoApp')
         .factory('LoginService', LoginService);
 
-    LoginService.$inject = ['$uibModal'];
+    LoginService.$inject = ['$uibModal','$window'];
 
-    function LoginService ($uibModal) {
+    function LoginService ($uibModal,$window) {
         var service = {
             open: open
         };
@@ -20,17 +20,7 @@
         return service;
 
         function open () {
-            if (modalInstance !== null) return;
-            modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'app/components/login/login.html',
-                controller: 'LoginController',
-                controllerAs: 'vm'
-            });
-            modalInstance.result.then(
-                resetModal,
-                resetModal
-            );
+            $window.location.href = 'app/login?postMessage';
         }
     }
 })();

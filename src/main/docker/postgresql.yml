@@ -5,8 +5,8 @@ services:
         image: postgres:9.5.4
         # volumes:
         #     - ~/volumes/jhipster/casdemo/postgresql/:/var/lib/postgresql/
+        hostname: pgdb
         environment:
             - POSTGRES_USER=casdemo
-            - POSTGRES_PASSWORD=
         ports:
-            - 5432:5432
+            - 5832:5432

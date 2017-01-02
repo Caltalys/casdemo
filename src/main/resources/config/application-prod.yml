@@ -19,10 +19,10 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://localhost:5432/casdemo
+        url: jdbc:postgresql://pgdb:5832/casdemo
         name:
         username: casdemo
-        password:
+        password: casdemo
     jpa:
         database-platform: com.ohajda.casdemo.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
@@ -43,7 +43,14 @@ liquibase:
     contexts: prod
 
 server:
-    port: 8080
+    contextPath: /demo
+    port: 8815
+    ssl:
+        key-store: keystore
+        key-alias: localhost
+        key-password: changeit
+        key-store-password: changeit
+        enabled: true
     compression:
         enabled: true
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
@@ -83,3 +90,16 @@ jhipster:
             host: localhost
             port: 5000
             queueSize: 512
+
+
+# ===================================================================
+# CAS Integration
+# ===================================================================
+cas:
+    service:
+        security: https://casdemo.ohajda.com:8815/demo/login/cas
+        home: https://casdemo.ohajda.com:8815/demo/
+    url:
+        prefix: https://cas.ohajda.com:8443/cas/
+        login: https://cas.ohajda.com:8443/cas/login
+        logout: https://cas.ohajda.com:8443/cas/logout

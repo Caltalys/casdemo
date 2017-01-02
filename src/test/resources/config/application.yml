@@ -81,3 +81,16 @@ jhipster:
         contactEmail:
         license:
         licenseUrl:
+
+
+# ===================================================================
+# CAS Integration
+# ===================================================================
+cas:
+    service:
+        security: https://casdemo.ohajda.com:8815/demo/login/cas
+        home: https://casdemo.ohajda.com:8815/demo
+    url:
+        prefix: https://cas.ohajda.com:8443/cas/
+        login: https://cas.ohajda.com:8443/cas/login
+        logout: https://cas.ohajda.com:8443/cas/logout

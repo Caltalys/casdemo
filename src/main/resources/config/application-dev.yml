@@ -50,7 +50,14 @@ liquibase:
     contexts: dev
 
 server:
-    port: 8080
+    contextPath: /demo
+    port: 8815
+    ssl:
+        key-store: src/main/docker/keystore
+        key-alias: localhost
+        key-password: changeit
+        key-store-password: changeit
+        enabled: true
 
 # ===================================================================
 # JHipster specific properties
@@ -83,3 +90,16 @@ jhipster:
             host: localhost
             port: 5000
             queueSize: 512
+
+
+# ===================================================================
+# CAS Integration
+# ===================================================================
+cas:
+    service:
+        security: https://casdemo.ohajda.com:8815/demo/login/cas
+        home: https://casdemo.ohajda.com:8815/demo
+    url:
+        prefix: https://cas.ohajda.com:8443/cas/
+        login: https://cas.ohajda.com:8443/cas/login
+        logout: https://cas.ohajda.com:8443/cas/logout

@@ -1,5 +1,6 @@
 package com.ohajda.casdemo;
 
+import com.ohajda.casdemo.config.CasProperties;
 import com.ohajda.casdemo.config.Constants;
 import com.ohajda.casdemo.config.DefaultProfileUtil;
 import com.ohajda.casdemo.config.JHipsterProperties;
@@ -23,7 +24,7 @@ import java.util.Collection;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = { MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
-@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class })
+@EnableConfigurationProperties({ JHipsterProperties.class, LiquibaseProperties.class, CasProperties.class })
 public class CasdemoApp {
 
     private static final Logger log = LoggerFactory.getLogger(CasdemoApp.class);
